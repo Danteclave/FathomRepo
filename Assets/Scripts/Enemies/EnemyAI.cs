@@ -176,6 +176,7 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange)
         {
             state = State.Chase;
+            StartCoroutine(soundpeepeepoopoo());
         }
     }
 
@@ -213,6 +214,7 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange)
         {
             state = State.Chase;
+            StartCoroutine(soundpeepeepoopoo());
         }
     }
 
@@ -226,9 +228,11 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange)
         {
             state = State.Chase;
+            StartCoroutine(soundpeepeepoopoo());
         }
         else if (huntingTime <= 0.0f || Vector3.Distance(agent.destination, transform.position) <= walkPointRange)
         {
+            FindObjectOfType<SoundManager>().Stop(player.gameObject, "chase");
             EnterSearch();
         }
     }
@@ -319,6 +323,16 @@ public class EnemyAI : MonoBehaviour
         huntingTime = maxHunt;
         state = State.Hunting;
         agent.SetDestination(player.position);
+        
     }
+    private IEnumerator soundpeepeepoopoo()
+    {
+        FindObjectOfType<SoundManager>().PlayMusic("alerted");
+        yield return new WaitForSeconds(2);
+        if(state == State.Chase || state == State.Hunting)
+        {
+            FindObjectOfType<SoundManager>().PlayMusic("chase");
+        }
+    } 
 
 }

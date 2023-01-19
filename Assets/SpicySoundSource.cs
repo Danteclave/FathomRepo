@@ -21,7 +21,7 @@ public class SpicySoundSource : MonoBehaviour
     {
         snd = sounds.ToDictionary(e => e.key, e => e.value);
 
-        if (EditorApplication.isPlaying)
+       // if (EditorApplication.isPlaying)
         {
             foreach (var x in snd)
             {
@@ -39,7 +39,7 @@ public class SpicySoundSource : MonoBehaviour
 
     private void OnValidate()
     {
-        yoink();
+        //yoink();
     }
 
     // Start is called before the first frame update

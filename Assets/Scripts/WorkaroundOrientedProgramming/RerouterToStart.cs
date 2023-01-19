@@ -11,14 +11,14 @@ public class RerouterToStart : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-        if (EditorApplication.isPlaying && FindObjectOfType<PlayerController>() == null)
+        /*if (EditorApplication.isPlaying && FindObjectOfType<PlayerController>() == null)
         {
             currentScene = SceneManager.GetActiveScene().name;
 
             SceneManager.LoadScene("SetupScene");
 
             StartCoroutine(WorkaroundDispatch());
-        }
+        }*/
     }
 
     IEnumerator WorkaroundDispatch()
